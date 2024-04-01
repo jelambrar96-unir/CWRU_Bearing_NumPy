@@ -47,7 +47,7 @@ When it comes to baseline data, we will refer to them simply as `RPM_Normal`. No
 5. The `1730_IR_21_DE48` file contains two sets of DE/FE time-series. Upon inspection, it was found that one of the pairs (the two `X215` time-series) is identical to the `1750_IR_21_DE48` file's time-series. For this reason, the redundancy was removed.
 6. The `1772_IR_14_DE48` file contains a pair of DE/FE time-series which is probably the correct one, but also contains another single DE time-series. This other time-series is identified as `X217`, but bears no resemblance to the two `X217` time-series found in the `1730_IR_21_DE48` file. Additionally, there was no `X217RPM` key in the file. For these reasons the `X217` time-series was removed.
 
-Based on these, the "Contents" table that can be found [here](TODO) contains the list of all .npz files, as well as the types of time-series they contain (DE, FE and/or BA).
+Based on these, the "Contents" table that can be found [here](/Contents.md) contains the list of all .npz files, as well as the types of time-series they contain (DE, FE and/or BA) and the number of entries.
 
 ## Attribution
 
