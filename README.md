@@ -14,7 +14,7 @@ A more detailed presentation of the methodology can be found [here](https://engi
 
 The present repository was created for two main reasons:
 
-1. The original dataset is given in .mat format, as MATLAB was (and still is, to some extent) the mainstream tool for data analysis in Engineering problems. Nonetheless, with the advances that Deep Learning has seen in the past decade, this dataset is being widely used to train, evaluate and deploy DL models. The mainstream frameworks for such tasks are written in Python, so converting the files directly to .npz format allows DL researchers and enthusiasts to easily and quickly load and subsequently convert them to tensor objects and feed them to NNs or other models.
+1. The original dataset is given in .mat format, as MATLAB was (and still is, to some extent) the mainstream tool for data analysis in Engineering problems. Nonetheless, with the advances that Deep Learning has seen in the past decade, this dataset is being widely used to train, evaluate and deploy DL models. The mainstream frameworks for such tasks are written in Python, so converting the files to .npz format allows DL researchers and enthusiasts to easily and quickly load and subsequently convert them to tensor objects and feed them to NNs or other models.
 
 2. The original files contain some inconsistencies and (perhaps) redundancies when it comes to their metadata (see [Changes](#changes) for more information). The version presented here contains only the time-series data necessary for analysis and DL.
 
@@ -22,16 +22,21 @@ The present repository was created for two main reasons:
 
 The original data files are in .mat format and are split into four different "families", depending on the motor's load and by extension its speed in RPM: 1797 (Load: 0 HP), 1772 (Load: 1 HP), 1750 (Load: 2 HP) and 1730 (Load: 3 HP). For each RPM value, the data are split in three main categories: Normal Baseline Data, containing time-series for normal bearings, Drive End (DE) Bearing Fault Data, containing time-series for bearings with single-point drive end defects and Fan-End (FE) Bearing Fault Data, containing time-series for bearings with fan end defects. For the DE case, data have been collected with two different frequencies, namely 12 kHz and 48 kHz, while FE data were collected at 12k samples/second.
 
+As far as the faulty data are concerned, the files are further split into categories based on:
 
+1. the fault diameter, which can be 0.007", 0.014", 0.021" or 0.028" and
+2. the type of fault, depending on whether it was introduced in the inner raceway (IR), the rolling element (i.e. ball (B)) or the outer raceway (OR).
 
-Each .mat file may contain one or more time-series related to accelerometer data. The time-series can correspond to DE accelerometer data, FE accelerometer data or base (BA) accelerometer data. Additionally, each .mat file has a unique identifier which can be found as the last key of the .mat files' metadata. Its format is `X___`, where `___` is a 3-digit code. For our purposes, we will use the `RPM_Fault_Diameter_End` format to identify each files, where:
+Specifically for the OR faults, a further differentiation is being made with regards to the position relative to the Load Zone, which is centered at 6:00. Based on this, a time-series can correspond to an OR Centered fault (at 6:00), an OR Orthogonal fault (at 3:00) and an OR Opposite fault (at 12:00).
 
-* `RPM` identifies the family in terms of RPM
-* `Fault` identifies the anomaly type of the file's time-series (can be `IR`, `B`, `OR@6`, `OR@3` or `OR@12`)
-* `Diameter` identifies the fault's diameter in milli-inches (can be `7`, `14`, `21` or `28`)
-* `End` identifies the location and can be either `FE` or `DE12` / `DE48`, depending on the sampling rate (12 kHz and 48 kHz, respectively)
+Each .mat file may contain one or more time-series related to accelerometer data. The time-series can correspond to DE accelerometer data, FE accelerometer data or base (BA) accelerometer data. Additionally, each .mat file has a unique identifier which can be found as the last key of the .mat files' metadata. Its format is `X___`, where `___` is a 3-digit code. For our purposes, we will use the `RPM_Fault_Diameter_End` format to identify files that contain anomalies, where:
 
-However, the `X___` format is used in the [Changes](#changes) section to highlight the issues with the original .mat files.
+* `RPM` identifies the family in terms of RPM,
+* `Fault` identifies the anomaly type of the file's time-series (can be `IR`, `B`, `OR@6`, `OR@3` or `OR@12`),
+* `Diameter` identifies the fault's diameter in milli-inches (can be `7`, `14`, `21` or `28`) and
+* `End` identifies the location and can be either `FE` or `DE12` / `DE48`, depending on the sampling rate (12 kHz and 48 kHz, respectively).
+
+When it comes to baseline data, we will refer to them simply as `RPM_Normal`. Note that the `X___` format is used in the [Changes](#changes) section to highlight the issues with the original .mat files.
 
 ## Changes
 
