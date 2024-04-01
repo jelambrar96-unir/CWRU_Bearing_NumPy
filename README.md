@@ -49,6 +49,10 @@ When it comes to baseline data, we will refer to them simply as `RPM_Normal`. No
 
 Based on these, the "Contents" table that can be found [here](/Contents.md) contains the list of all .npz files, as well as the types of time-series they contain (DE, FE and/or BA) and the number of entries.
 
+## Loading Files
+
+To load any .npz datafile, use the `numpy.load()` function, the documentation of which can be found [here](https://numpy.org/doc/stable/reference/generated/numpy.load.html). Note that the keys of the .npz file's arrays are DE, FE and BA, as long as the corresponding time-series exist for the specified file (to confirm which time-series exist for which files, you can read the "Contents" table [here](/Contents.md)).
+
 ## Attribution
 
 All credits for the dataset belong to CWRU. This corrected and reduced version of the dataset was developed for the purposes of the following publication:
