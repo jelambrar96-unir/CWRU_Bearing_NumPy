@@ -40,7 +40,14 @@ When it comes to baseline data, we will refer to them simply as `RPM_Normal`. No
 
 ## Changes
 
-TODO
+1. The convention presented in the previous section has been followed to name the .npz files.
+2. All .mat files' metadata have been removed. Besides, there were inconsistencies between metadata (e.g. some IR files contained an `'i'` key, while others did not). Note that this means that there is no retained information as far as the `X___` naming convention is concerned.
+3. The .npz files only contain time-series data. Their keys can be either DE, FE or BA, based on the type of accelerometer data they contain. Note that the number of time-series varies between different files (some may contain only 1, while others contain 3).
+4. The `1750_Normal.mat` file contains two sets of DE/FE time-series. Upon inspection, it was found that one of the pairs (the two `X098` time-series) is identical to the `1772_Normal.mat` file's time-series. For this reason, the redundancy was removed.
+5. The `1730_IR_21_DE48` file contains two sets of DE/FE time-series. Upon inspection, it was found that one of the pairs (the two `X215` time-series) is identical to the `1750_IR_21_DE48` file's time-series. For this reason, the redundancy was removed.
+6. The `1772_IR_14_DE48` file contains a pair of DE/FE time-series which is probably the correct one, but also contains another single DE time-series. This other time-series is identified as `X217`, but bears no resemblance to the two `X217` time-series found in the `1730_IR_21_DE48` file. Additionally, there was no `X217RPM` key in the file. For these reasons the `X217` time-series was removed.
+
+Based on these, the "Contents" table that can be found [here](TODO) contains the list of all .npz files, as well as the types of time-series they contain (DE, FE and/or BA).
 
 ## Attribution
 
