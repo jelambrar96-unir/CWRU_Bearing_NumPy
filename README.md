@@ -58,7 +58,15 @@ To load any .npz datafile, use the `numpy.load()` function, the documentation of
 All credits for the dataset belong to CWRU. This corrected and reduced version of the dataset was developed for the purposes of the following publication:
 
 ```
-TODO
+@article{s24165310,
+  author = {Rigas, Spyros and Tzouveli, Paraskevi and Kollias, Stefanos},
+  title = {An End-to-End Deep Learning Framework for Fault Detection in Marine Machinery},
+  journal = {Sensors},
+  volume = {24},
+  year = {2024},
+  number = {16},
+  doi = {10.3390/s24165310}
+}
 ```
 
 Nonetheless, citing this paper is not required for researchers who used this version of the dataset.
