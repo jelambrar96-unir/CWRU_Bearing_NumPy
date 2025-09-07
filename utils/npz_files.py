@@ -19,7 +19,29 @@ def open_npz(file_path):
     except Exception as e:
         print(f"Error: {e}")
         return None
+
+
+def open_npz_key(file_path, key):
+    """
+    Open an NPZ file and return the loaded data.
     
+    Args:
+        file_path (str): The path to the NPZ file.
+    
+    Returns:
+        dict: A dictionary containing the data stored in the NPZ file.
+    """
+    try:
+        data = np.load(file_path)[key]
+        return data
+    except KeyError:
+        print(f"Error: The file '{file_path}' does not contains key '{key}'.")
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' does not exist.")
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+
 
 def save_npz(output_path: str, **arrays):
     """
